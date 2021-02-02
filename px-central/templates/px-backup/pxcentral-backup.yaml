@@ -93,6 +93,7 @@ spec:
       maxUnavailable: 1
     type: RollingUpdate
   replicas: 1
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
      app: px-backup

@@ -377,6 +377,7 @@ metadata:
 {{- include "px-central.labels" . | nindent 4 }}
 spec:
   replicas: 1
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: cortex-configs
@@ -457,6 +458,7 @@ metadata:
 {{- include "px-central.labels" . | nindent 4 }}
 spec:
   replicas: 2
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: cortex-distributor
@@ -540,6 +542,7 @@ metadata:
 {{- include "px-central.labels" . | nindent 4 }}
 spec:
   replicas: 2
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: cortex-nginx
@@ -620,6 +623,7 @@ metadata:
 {{- include "px-central.labels" . | nindent 4 }}
 spec:
   replicas: 2
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: cortex-querier
@@ -704,6 +708,7 @@ metadata:
 {{- include "px-central.labels" . | nindent 4 }}
 spec:
   replicas: 2
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: cortex-query-frontend
@@ -783,6 +788,7 @@ metadata:
 {{- include "px-central.labels" . | nindent 4 }}
 spec:
   replicas: 1
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: cortex-ruler
@@ -868,6 +874,7 @@ metadata:
 {{- include "px-central.labels" . | nindent 4 }}
 spec:
   replicas: 1
+  revisionHistoryLimit: 0
   selector:
     matchLabels:
       app: cortex-table-manager
@@ -1144,9 +1151,4 @@ spec:
             periodSeconds: 30
             successThreshold: 1
             timeoutSeconds: 1
-          readinessProbe:
-            httpGet:
-              path: /ready
-              port: http-metrics
-            initialDelaySeconds: 60
 {{- end -}}

@@ -63,6 +63,24 @@ pxmonitor:
   oidcClientID: pxcentral
   oidcClientSecret: ""
 
+## Memory settings: These are calculated automatically unless specified otherwise
+## To run on environments with little resources (<= 8GB), tune your heap settings:
+## maxHeapSize:
+## - calculate 1/2 ram and cap to 1024MB
+## - calculate 1/4 ram and cap to 8192MB
+## - pick the max
+## newHeapSize:
+## A good guideline is 100 MB per CPU core.
+## - min(100 * num_cores, 1/4 * heap size)
+##
+# maxHeapSize: 4G
+# newHeapSize: 800M
+
+cassandra:
+  jvm:
+    maxHeapSize:
+    newHeapSize:
+
 installCRDs: false
 clusterDomain: "cluster.local"
 cassandraUsername: cassandra
@@ -84,32 +102,32 @@ images:
     registry: docker.io
     repo: portworx
     imageName: pxcentral-onprem-api
-    tag: 1.2.0
+    tag: 1.2.1
   pxcentralFrontendImage:
     registry: docker.io
     repo: portworx
     imageName: pxcentral-onprem-ui-frontend
-    tag: 1.2.0
+    tag: 1.2.2
   pxcentralBackendImage:
     registry: docker.io
     repo: portworx
     imageName: pxcentral-onprem-ui-backend
-    tag: 1.2.0
+    tag: 1.2.2
   pxcentralMiddlewareImage:
     registry: docker.io
     repo: portworx
     imageName: pxcentral-onprem-ui-lhbackend
-    tag: 1.2.0
+    tag: 1.2.2
   pxBackupImage:
     registry: docker.io
     repo: portworx
     imageName: px-backup
-    tag: 1.2.0
+    tag: 1.2.2
   postInstallSetupImage:
     registry: docker.io
     repo: portworx
     imageName: pxcentral-onprem-post-setup
-    tag: 1.1.2-dev
+    tag: 1.2.2
   etcdImage:
     registry: docker.io
     repo: bitnami
@@ -150,7 +168,7 @@ images:
     registry: docker.io
     repo: portworx
     imageName: pxcentral-onprem-els-ha-setup
-    tag: 1.1.0
+    tag: 1.1.1
 
   cortexImage:
     registry: quay.io
@@ -206,7 +224,7 @@ images:
     registry: docker.io
     repo: portworx
     imageName: pxcentral-monitor-post-install-setup
-    tag: 1.2.0
+    tag: 1.2.1
   memcachedMetricsImage:
     registry: quay.io
     repo: prometheus
