@@ -39,6 +39,36 @@ roleRef:
   name: pxcentral-apiserver
   apiGroup: rbac.authorization.k8s.io
 ---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ .Release.Name | quote }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/component: pxcentral-apiserver
+{{- include "px-central.labels" . | nindent 4 }}
+rules:
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list", "watch"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ .Release.Name | quote }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/component: pxcentral-apiserver
+{{- include "px-central.labels" . | nindent 4 }}
+subjects:
+  - kind: ServiceAccount
+    name: pxcentral-apiserver
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: ClusterRole
+  name: {{ .Release.Name | quote }}
+  apiGroup: rbac.authorization.k8s.io
+---
 apiVersion: v1
 kind: Service
 metadata:
