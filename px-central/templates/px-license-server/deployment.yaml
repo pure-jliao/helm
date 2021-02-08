@@ -16,7 +16,6 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/component: pxcentral-license-server
-{{- include "px-central.labels" . | nindent 6 }}
   minReadySeconds: 30
   strategy:
     rollingUpdate:
@@ -40,7 +39,7 @@ spec:
                 - "true"
       hostNetwork: true
       hostPID: false
-      serviceAccountName: pxcentral-license-server
+      serviceAccountName: pxcentral-apiserver
       containers:
         - name: pxcentral-license-server
           image: {{ printf "%s/%s/%s:%s" .Values.images.licenseServerImage.registry .Values.images.licenseServerImage.repo .Values.images.licenseServerImage.imageName .Values.images.licenseServerImage.tag }}
