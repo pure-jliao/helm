@@ -83,6 +83,7 @@ Parameter | Description | Default
 `persistentStorage.keycloakThemeVolumeSize` | Keycloak frontend theme volume size | `"5Gi"`
 `persistentStorage.keycloakBackendVolumeSize` | Keycloak backend volume size | `"10Gi"`
 `storkRequired` | Scheduler name as stork | `false`
+`pxBackupUIServiceType` | UI service type | `"LoadBalancer"`
 `pxcentralDBPassword` | PX-Central cluster store mysql database password | `Password1`
 `caCertsSecretName` | Name of the Kubernetes Secret, which contains the CA Certificates. | `""`
 `oidc` | Enable OIDC for PX-Central and PX-backup for RBAC | `""`
